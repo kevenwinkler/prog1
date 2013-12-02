@@ -32,25 +32,24 @@ public class Quersummen {
 		zahl3 = zahl1;
 		
 		while (zahl1 > 0) {
-			if (i%2 == 0) {
-				altquersumme1 += zahl1%10;
-			    altquersumme2 += zahl2%100;
-				altquersumme3 += zahl3%1000;
-				i++;
-			} else {
-				altquersumme1 -= zahl1%10;
-			    altquersumme2 -= zahl2%100;
-				altquersumme3 -= zahl3%1000;
-				i++;
-			}
-		   quersumme1 += zahl1%10;
-		   quersumme2 += zahl2%100;
-		   quersumme3 += zahl3%1000;
-		   zahl1=zahl1/10;
-		   zahl2=zahl2/100;
-		   zahl3=zahl3/1000;
+		    if (i%2 == 0) {
+	                altquersumme1 += zahl1%10;
+			altquersumme2 += zahl2%100;
+			altquersumme3 += zahl3%1000;
+			i++;
+		    } else {
+			altquersumme1 -= zahl1%10;
+			altquersumme2 -= zahl2%100;
+			altquersumme3 -= zahl3%1000;
+			i++;
+	            }
+		    quersumme1 += zahl1%10;
+		    quersumme2 += zahl2%100;
+		    quersumme3 += zahl3%1000;
+		    zahl1=zahl1/10;
+		    zahl2=zahl2/100;
+		    zahl3=zahl3/1000;
 		}
-
 		System.out.println("Quersumme erster Stufe: \t\t" + quersumme1);
 		System.out.println("Alternierende Quersumme erster Stufe: \t" + altquersumme1);
 		System.out.println("Quersumme zweiter Stufe:\t\t" + quersumme2);
