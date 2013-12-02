@@ -21,12 +21,12 @@ public class Quersummen {
 		int i = 1;
 			
 		if (args.length > 0) {
-			zahl1 = Integer.parseInt(args[0]);
+		    zahl1 = Integer.parseInt(args[0]);
 		} else {
-			System.out.println("Bitte geben Sie eine natuerliche Zahl ein:");
-			Scanner scan = new Scanner(System.in);
-			zahl1 = Integer.parseInt(scan.next());
-			scan.close();
+		    System.out.println("Bitte geben Sie eine natuerliche Zahl ein:");
+		    Scanner scan = new Scanner(System.in);
+		    zahl1 = Integer.parseInt(scan.next());
+		    scan.close();
 		} 
 		zahl2 = zahl1;
 		zahl3 = zahl1;
