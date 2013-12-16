@@ -31,7 +31,20 @@ public class Quersummen {
                 altQuersumme3 -= zahl3 % 1000;
                 i++;
             }
-            quersumme1 += zahl1 % 10;
+            quersumme1 += zahl1 % 10; 
+            /* 
+            1. Durchlauf while-Schleife: Quersumme1 = Rest von 10 / Quersumme1 + die übergebene Zahl (bspw. 12345) = 5 
+            (da 12345/10 = 1234,5; es bleibt ein Rest von 5)
+               & zahl1 (übergebene Zahl) wird um eine Stelle verkürzt durch / 10 (siehe unten); jetzt also zahl1 = 1234 
+            
+            2. Durchlauf: Quersumme1 = 5 + (Rest von 10 / 1234) = 5 + 4
+               & jetzt: zahl1 = 123
+            
+            3. Durchlauf: Quersumme1 = 5 + 4 + (Rest von 10 / 123) = 5 + 4 + 3
+               & jetzt zahl1 = 12
+               
+               etc.
+            */
             quersumme2 += zahl2 % 100;
             quersumme3 += zahl3 % 1000;
             zahl1 = zahl1 / 10;
