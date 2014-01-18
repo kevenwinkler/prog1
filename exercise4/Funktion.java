@@ -1,12 +1,12 @@
 /**
- * @author Tobias Stein 4434919 Gruppe 6a
+ * @author Keven Winkler 4434993 Gruppe 2c
  * 
 */
 public abstract class Funktion {
     /**
      * @param args wird nicht verwendet
      */
-    double x, eps;
+    double x, eps, xmax;
     int i = 0;
     abstract double f();
     abstract double g();
@@ -14,7 +14,6 @@ public abstract class Funktion {
     static Funktion[] rechnen = new Funktion[10];
     
     public void tabelle() {
-        int xmax = 130;
         System.out.println();
         System.out.println("WERTETABELLE");
         do {
@@ -24,7 +23,7 @@ public abstract class Funktion {
             this.x = this.x + this.e(); 
             this.i++;
         } 
-        while (this.i <= xmax);
+        while (this.x <= this.xmax);
     }
     
     public void newton(double s) {
@@ -32,7 +31,7 @@ public abstract class Funktion {
         System.out.println();
         System.out.println("Startwert: " + this.x);
         do {
-            this.x = this.x - this.f() / this.g();
+        	this.x = this.x - this.f() / this.g();
             System.out.printf("x:%12.8f", this.x);
             System.out.printf("  |  y:%12.8f\n", this.f());
             this.i++;
@@ -46,26 +45,26 @@ public abstract class Funktion {
     } 
     
     public static void main(String[] args) {
-        // Tabelle/Parabel (x-Wert[= Startwert}, eps, a, b, c, d)
-        rechnen[0] = new Tabelle(1.0 , 0.00000001 , 2 , -20 , -6, 30);
-        rechnen[0].newton(1.0);
-        rechnen[1] = new Tabelle(-2.0 , 0.1 , 2.0 , -20.0 , -6.0, 30.0);
-        rechnen[1].tabelle();
-        rechnen[2] = new Parabel(0.5 , 0.00000001 , 1.0 , 3.0 , -5.0);
-        rechnen[2].newton(0.5);
-        rechnen[3] = new Parabel(0.5 , 0.1 , 1.0 , 3.0 , -5.0);
-        rechnen[3].tabelle();
+    	// Tabelle/Parabel (x-Wert[= Startwert], maximaler x-Wert, eps, a, b, c, d)
+    	rechnen[0] = new Tabelle(1.0 , 0 , 0.00000001 , 2 , -20 , -6, 30);
+    	rechnen[0].newton(1.0);
+    	rechnen[1] = new Tabelle(-2.0 , 12.0 , 0.1 , 2.0 , -20.0 , -6.0, 30.0);
+    	rechnen[1].tabelle();
+    	rechnen[2] = new Parabel(0.5 , 0 , 0.00000001 , 1.0 , 3.0 , -5.0);
+    	rechnen[2].newton(0.5);
+    	rechnen[3] = new Parabel(0.5 , 12.0 , 0.1 , 1.0 , 3.0 , -5.0);
+    	rechnen[3].tabelle();
         /* 
          * Wertetabelle hat einen Vorzeichenwechsel bei -1.3 auf -1.2 -> Nullstelle
            Wertetabelle hat einen Vorzeichenwechsel bei 1.1 auf 1.2 -> Nullstelle
            Wertetabelle hat einen Vorzeichenwechsel bei 10.1 auf 10.2 -> Nullstelle 
          */
-        rechnen[4] = new Tabelle(-2 , 0.00000001 , 2 , -20 , -6, 30);
-        rechnen[4].newton(-2);
-        rechnen[5] = new Tabelle(1 , 0.00000001 , 2 , -20 , -6, 30);
-        rechnen[5].newton(1);
-        rechnen[6] = new Tabelle(50 , 0.00000001 , 2 , -20 , -6, 30);
-        rechnen[6].newton(50);
+    	rechnen[4] = new Tabelle(-2 , 0 , 0.00000001 , 2 , -20 , -6, 30);
+    	rechnen[4].newton(-2);
+    	rechnen[5] = new Tabelle(1 , 0 , 0.00000001 , 2 , -20 , -6, 30);
+    	rechnen[5].newton(1);
+    	rechnen[6] = new Tabelle(50 , 0 , 0.00000001 , 2 , -20 , -6, 30);
+    	rechnen[6].newton(50);
     } 
 }
 
@@ -73,8 +72,9 @@ class Parabel extends Funktion {
     double a;
     double b;
     double c;
-    public Parabel(double x, double eps, double a, double b, double c) {
+    public Parabel(double x, double xmax, double eps, double a, double b, double c) {
         this.x = x;
+        this.xmax = xmax;
         this.eps = eps;
         this.a = a;
         this.b = b;
@@ -87,7 +87,7 @@ class Parabel extends Funktion {
         return 2 * this.a * x + this.b; 
     }
     public double e() {
-        return eps;
+    	return eps;
     }
 }
 
@@ -96,8 +96,9 @@ class Tabelle extends Funktion {
     double b;
     double c;
     double d;
-    Tabelle(double x, double eps, double a, double b, double c, double d) {
+    Tabelle(double x, double xmax, double eps, double a, double b, double c, double d) {
         this.x = x;
+        this.xmax = xmax;
         this.eps = eps;
         this.a = a;
         this.b = b;
@@ -108,9 +109,10 @@ class Tabelle extends Funktion {
         return this.a * x * x * x + this.b * x * x + this.c * x + this.d;
     }
     public double g() {
-        return this.a * 3 * x * x + this.b * 2 * x + this.c;
+    	return this.a * 3 * x * x +this.b * 2 * x + this.c;
     }
     public double e() {
-        return eps;
+    	return eps;
     }
 }
+
