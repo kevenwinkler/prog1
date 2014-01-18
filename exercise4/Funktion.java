@@ -1,5 +1,5 @@
 /**
- * @author  Keven Winkler 4434993 Gruppe 2c
+ * @author Tobias Stein 4434919 Gruppe 6a
  * 
 */
 public abstract class Funktion {
@@ -10,7 +10,6 @@ public abstract class Funktion {
     int i = 0;
     abstract double f();
     abstract double g();
-    abstract double t();
     abstract double e();
     static Funktion[] rechnen = new Funktion[10];
     
@@ -87,9 +86,6 @@ class Parabel extends Funktion {
     public double g() {
         return 2 * this.a * x + this.b; 
     }
-    public double t() {
-        return this.x; 
-    }
     public double e() {
         return eps;
     }
@@ -114,11 +110,7 @@ class Tabelle extends Funktion {
     public double g() {
         return this.a * 3 * x * x + this.b * 2 * x + this.c;
     }
-    public double t() {
-        return x;
-    }
     public double e() {
         return eps;
     }
 }
-
