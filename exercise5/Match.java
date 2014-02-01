@@ -39,8 +39,9 @@ public class Match {
                         // Nur Integer erlauben!
                         try { 
                             Integer.parseInt(args[t].substring(h, h + 1)); 
-                        } catch (IllegalArgumentException ex) { // Fehlerbehandlung und Abbruch!
-                            System.out.println(args[t] + " ist kein Integer");
+                        } catch (IllegalArgumentException e1) { // Fehlerbehandlung und Abbruch!
+                        	System.out.println("IllegalArgumentException: " + e1.toString());
+                        	System.out.println(args[t] + " ist kein Integer");
                             returnMatch(value);
                             return;
                         }
@@ -93,7 +94,6 @@ public class Match {
         for (int z = 0; z < maxlength; z++) {
             intArray[z] = 1;
         }
-        //System.out.println("----");
         while (true) {
             //System.out.print("D " + v + ": ");
             try {
@@ -124,8 +124,8 @@ public class Match {
                     v++;
                     continue;
                 }
-            } catch (StringIndexOutOfBoundsException ex) {
-                //System.out.println("IndexOutOfBounds!");
+            } catch (StringIndexOutOfBoundsException e2) {
+                System.out.println("IndexOutOfBoundsException:" + e2.toString());
                 break;
             }
         }
