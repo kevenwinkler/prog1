@@ -1,7 +1,7 @@
 /**
  * Die Klasse Match ueberprueft zwei uebergebene Zahlenwerte von 0 bis 9.
- * 
- * 
+ *
+ *
   @author Keven Winkler 4434993 Gruppe 2c
 */
 public class Match {
@@ -32,12 +32,12 @@ public class Match {
         } else {
             for (int t = 0; t < args.length; t++) { // Beide Argumente durchgehen
                 for (int h = 0; h < args[t].length(); h++) {
-                    // Joker für p abfangen -> keine Zahl aber gueltiges Element
+                    // Joker fuer p abfangen -> keine Zahl aber gueltiges Element
                     if (args[t].substring(h, h + 1).equals(joker) && t == 0) { 
                         continue;
                     } else {
                         // Nur Integer erlauben!
-                        try { 
+                        try {
                             Integer.parseInt(args[t].substring(h, h + 1)); 
                         } catch (IllegalArgumentException e1) { // Fehlerbehandlung und Abbruch!
                         	System.out.println("IllegalArgumentException: " + e1.toString());
@@ -65,7 +65,7 @@ public class Match {
     }
     /**
       Die Methode match vergleicht die uebergebenen Argumente
-      
+
       @param p ist der erste uebergebene Wert
       @param s ist der zweite uebergebene Wert
     */
@@ -89,7 +89,7 @@ public class Match {
             returnMatch(value);
             return;
         }
-        // Array anlegen, welches nur die Zahl 1 enthält
+        // Array anlegen, welches nur die Zahl 1 enthaelt
         int[] intArray = new int[maxlength];
         for (int z = 0; z < maxlength; z++) {
             intArray[z] = 1;
