@@ -68,6 +68,7 @@ public class Match {
       
       @param p ist der erste uebergebene Wert
       @param s ist der zweite uebergebene Wert
+      @return gibt true oder false aus
     */
     public static boolean match(String p, String s) {
         boolean value = false;
