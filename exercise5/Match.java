@@ -1,12 +1,12 @@
 /**
- * Die Klasse Match ueberprueft zwei uebergebene Zahlenwerte von 0 bis 9.
- *
- *
+ * Die Klasse Match vergleicht zwei uebergebene Zahlenwerte von 0 bis 9.
+ * 
+ * 
   @author Keven Winkler 4434993 Gruppe 2c
 */
 public class Match {
     /**
-    @param args benoetigt zwei Zahlen-Werte
+    @param args benoetigt zwei Zahlen-Werte als Strings; d.h. im Falle eines Jokers Anfuehrungszeichen benutzen
     */
     public static void main(String[] args) {
         String p, s, joker = "*";
@@ -18,7 +18,7 @@ public class Match {
             p = args[0];
             s = args[1];
         } else {
-            System.out.println("Bitte zwei Argumente eingeben!");
+            System.out.println("Bitte zwei Argumente eingeben! Es sollte sich dabei um Strings handeln!");
             returnMatch(value);
             return;
         }
@@ -37,11 +37,11 @@ public class Match {
                         continue;
                     } else {
                         // Nur Integer erlauben!
-                        try {
+                        try { 
                             Integer.parseInt(args[t].substring(h, h + 1)); 
                         } catch (IllegalArgumentException e1) { // Fehlerbehandlung und Abbruch!
-                        	System.out.println("IllegalArgumentException: " + e1.toString());
-                        	System.out.println(args[t] + " ist kein Integer");
+                            System.out.println("IllegalArgumentException: " + e1.toString());
+                            System.out.println("'" + args[t] + "'" + " ist kein Integer");
                             returnMatch(value);
                             return;
                         }
@@ -65,7 +65,7 @@ public class Match {
     }
     /**
       Die Methode match vergleicht die uebergebenen Argumente
-
+      
       @param p ist der erste uebergebene Wert
       @param s ist der zweite uebergebene Wert
     */
@@ -125,7 +125,7 @@ public class Match {
                     continue;
                 }
             } catch (StringIndexOutOfBoundsException e2) {
-                System.out.println("IndexOutOfBoundsException:" + e2.toString());
+                //System.out.println("IndexOutOfBoundsException:" + e2.toString());
                 break;
             }
         }
