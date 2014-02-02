@@ -69,7 +69,7 @@ public class Match {
       @param p ist der erste uebergebene Wert
       @param s ist der zweite uebergebene Wert
     */
-    public static void match(String p, String s) {
+    public static boolean match(String p, String s) {
         boolean value = false;
         int t = 0;
         int v = 0;
@@ -82,12 +82,10 @@ public class Match {
         }
         // Sonderfaelle behandeln!
         if (p.length() < s.length() && star == 0) {
-            returnMatch(value);
-            return;
+            return returnMatch(value);
         }
         if (p.length() - star > s.length()) {
-            returnMatch(value);
-            return;
+            return returnMatch(value);
         }
         // Array anlegen, welches nur die Zahl 1 enthaelt
         int[] intArray = new int[maxlength];
@@ -138,7 +136,6 @@ public class Match {
                 continue;
             }
         }
-        returnMatch(value);
-        return;
+        return returnMatch(value);
     }
 }
